@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const pool = require('../database');
 
 const { isLoggedIn, isNotLoggedin } = require('../lib/auth');
 const passport = require('passport');
@@ -15,8 +16,8 @@ router.post('/signup', isNotLoggedin, passport.authenticate('local.signup', {
 }))
 
 router.get('/signin', isNotLoggedin, (req, res) => {
-    res.render('auth/signin')
-})
+    res.render('auth/signin');
+});
 
 router.post('/signin', isNotLoggedin, (req, res, next) => {
     passport.authenticate('local.signin', {
@@ -37,5 +38,11 @@ router.get('/logout', isLoggedIn, (req, res) => {
     });
     // res.redirect('/signin')
 });
+
+router.get('/:id', isLoggedIn, async (req,res) => {
+    const id = req.params.id;
+    const erase = await pool.query('delete from tipoparametro where tipoparid = ?',[id]);
+    res.redirect('tipoparametro');
+})
 
 module.exports = router;

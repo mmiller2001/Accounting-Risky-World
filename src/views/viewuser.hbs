@@ -1,0 +1,45 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/tipoparametro">Tipo Parametro</a></li>
+        <li class="breadcrumb-item active" aria-current="page">View Parametro</li>
+    </ol>
+</nav>
+
+<div class="view-user p-5">
+    {{#each tipoparametro}}
+    <div class="row mb-5">
+        <div class="col text-center">
+            <h3>{{this.tipoparcodigo}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">{{this.tipoparcodigo}}</th>
+                        <td>{{this.tipoparusrcreaid}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="col">
+                <b>Descripcion</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                {{this.tipodescripcion}}
+            </div>
+        </div>
+    {{/each}}
+</div>
