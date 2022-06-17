@@ -61,4 +61,6 @@ create table rol (
     rolfechamod datetime null default null
 );
 
+--useless comment
+
 select * from usuario;
