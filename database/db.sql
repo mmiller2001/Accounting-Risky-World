@@ -62,5 +62,6 @@ create table rol (
 );
 
 --useless comment
+--another useless comment
 
 select * from usuario;
