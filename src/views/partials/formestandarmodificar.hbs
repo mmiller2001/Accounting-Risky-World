@@ -1,0 +1,79 @@
+
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Catalogo de Cuentas - Nivel 1
+    </div>
+    {{#each catalogo}}
+    <div class="card-body">
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" value="{{this.catbasecodigo}}"
+                    placeholder="CODIGO" name="catbasecodigo">
+                <label for="first_name">Codigo de Catalogo</label>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="col-6">
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" name="codrefid"
+                    aria-label="Floating label select example" required>
+
+                    {{#each catalogo}}
+                    <option value="{{this.codrefid}}" hidden="hidden" selected="selected">{{this.codrefdescripcion}}</option>
+                    {{/each}}
+
+                    {{#each codrefid}}
+                    <option value={{this.codrefid}}>{{this.codrefdescripcion}}</option>
+                    {{/each}}
+                </select>
+                <label for="floatingSelect">Codigo de Referencia</label>
+            </div>
+        </div>
+
+        <br>
+        <div class="col-6">
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" name="coddocid"
+                    aria-label="Floating label select example" required>
+                    
+                    {{#each catalogo}}
+                    <option value="{{this.coddocid}}" hidden="hidden" selected="selected">{{this.coddocdescripcion}}</option>
+                    {{/each}}
+
+                    {{#each coddocid}}
+                    <option value={{this.coddocid}}>{{this.coddocdescripcion}}</option>
+                    {{/each}}
+                </select>
+                <label for="floatingSelect">Codigo de Descripcion</label>
+            </div>
+        </div>
+
+        {{#each catalogo}}
+        <br>
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="catbasedescripcion"
+                    style="height: 200px;">{{this.catbasedescripcion}}</textarea>
+                <label for="tipodescripcion">Descripcion de Catalogo</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="catbaseexplicacion"
+                    style="height: 200px;">{{this.catbaseexplicacion}}</textarea>
+                <label for="tipodescripcion">Explicacion de Catalogo</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="card-footer text-muted">
+        Creado: {{this.catbasefechacrea}}
+    </div>
+    {{/each}}
+</div>

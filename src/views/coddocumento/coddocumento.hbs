@@ -1,0 +1,35 @@
+<h1 class="display-6">Codigos de Documento</h1>
+
+<table class="table table-bordered">
+  <thead class = "thead-dark text-center">
+    <tr>
+      <th scope="col">Documento ID</th>
+      <th scope="col">Codigo</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Explicacion</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    {{#each coddocumento}}
+    <tr>
+      <th scope="row">{{this.coddocid}}</th>
+      <td>{{this.coddoccodigo}}</td>
+      <td>{{this.coddocdescripcion}}</td>
+      <td>{{this.coddocexplicacion}}</td>
+     <td class = "text-center">
+         <a href = "/coddocumento/ver/{{this.coddocid}}" type = "buton" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
+         <a href = "/coddocumento/modificar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
+         <a href = "/coddocumento/eliminar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-danger btn-small"><i class = "bi bi-person-x"></i>Eliminar</a>
+     </td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+
+<div class = "row">
+  <div class = "col-6 d-flex justify-content-end">
+    <a href = "/coddocumento/mas" type = "button" class = "btn btn-primary align-self-center">Agregar Codigo Documento</a>
+  </div>
+</div>

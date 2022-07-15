@@ -5,41 +5,29 @@
     </ol>
 </nav>
 
-<div class="view-user p-5">
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
     {{#each tipoparametro}}
-    <div class="row mb-5">
-        <div class="col text-center">
-            <h3>{{this.tipoparcodigo}}</h3>
-        </div>
+    <div class="card-header text-center">
+        Tipo Parametro <br>
+        <small>{{this.usuarionombremodifica}} • Modifico {{this.tipoparfechamod}} </small>
     </div>
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Usuario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">{{this.tipoparcodigo}}</th>
-                        <td>{{this.tipoparusrcreaid}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
+    <div class="card-body">
+        
+        <h5 class="card-title">{{this.tipoparcodigo}}</h5>
 
-    <div class="row">
-            <div class="col">
-                <b>Descripcion</b>
-            </div>
+        <div class="text-left">
+            <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.tipoparcodigo}}</p>
+            <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+            <p class="card-text"><strong>Descripcion:</strong> {{this.tipodescripcion}}</p>
+
+            <hr class="bg-black">
         </div>
-        <div class="row">
-            <div class="col">
-                {{this.tipodescripcion}}
-            </div>
-        </div>
+        <a href="/tipoparametro" class="btn btn-primary">Tipo Parametros</a>
+    </div>
+    <div class="card-footer text-muted">
+        <small>{{this.usuarionombre}} • Creo {{this.tipoparfechacrea}}</small>
+    </div>
     {{/each}}
+
 </div>

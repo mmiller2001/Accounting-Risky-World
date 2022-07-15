@@ -1,22 +1,24 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+const moment = require('moment');
+
 const pool = require('../database')
 const helpers = require('../lib/helpers')
 
 //login
 passport.use('local.signin', new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password',
+    usernameField: 'usuario',
+    passwordField: 'usuariopass',
     passReqToCallback: true,
 }, async (req,username, password, done) => {
     console.log(req.body)
-    const rows = await pool.query('select * from users where username = ?', [username])
+    const rows = await pool.query('select * from usuario where usuario = ?', [username])
     if(rows.length > 0) {
         const user = rows[0];
-        const validPassword = await helpers.matchPassword(password,user.password);
+        const validPassword = await helpers.matchPassword(password,user.usuariopass);
         if(validPassword) {
-            done(null,user,req.flash('Success','Welcome'+ user.username));
+            done(null,user,req.flash('Success','Welcome'+ user.usuario));
         } else {
             done(null, false, req.flash('message','Incorrect Password'));
         }
@@ -28,31 +30,40 @@ passport.use('local.signin', new LocalStrategy({
 
 //signin
 passport.use('local.signup', new LocalStrategy({
-    usernameField: 'username',
-    passwordField: 'password',
+    usernameField: 'usuario',
+    passwordField: 'usuariopass',
     passReqToCallback: true
-}, async (req,username, password, done) => {
-    const { fullname } = req.body
+}, async (req,usuario, usuariopass, done) => {
+    const { usuarionombre, usuariocorreo } = req.body
+    const date = console.log(moment().format('L'));
+
     const newUser = {
-        username: username,
-        fullname: fullname,
-        password: password
+        usuario: usuario,
+        usuarionombre: usuarionombre,
+        usuariopass: usuariopass,
+        usuarioestatus: 1,
+        usuariocambiapass: 0,
+        usuariocorreo: usuariocorreo,
+        usuariousrcreaid: null,
+        usuariofechacrea: moment(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+        usuariousrmodid: null,
+        usuariofechamod: null
     };
 
     console.log(newUser);
-    console.log('fullname: ',fullname);
+    console.log('usuarionombre: ',usuarionombre);
 
-    newUser.password = await helpers.encryptPassword(password);
-    const result = await pool.query('insert into users set ?', [newUser]);
-    newUser.id = result.insertId;
+    newUser.usuariopass = await helpers.encryptPassword(usuariopass);
+    const result = await pool.query('insert into usuario set ?', [newUser]);
+    newUser.usuarioid = result.insertId;
     return done(null,newUser);
 }));
 
 passport.serializeUser((user, done) => {
-    done(null,user.id);
+    done(null,user.usuarioid);
 })
 
 passport.deserializeUser(async (id, done) => {
-    const rows = await pool.query('select * from users where id = ?', [id]);
+    const rows = await pool.query('select * from usuario where usuarioid = ?', [id]);
     done(null,rows[0]);
 })

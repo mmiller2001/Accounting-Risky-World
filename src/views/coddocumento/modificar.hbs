@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/coddocumento">Codigos de Documento</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Modificar Documento</li>
+  </ol>
+</nav>
+
+{{#each coddocumento}}
+<form class = "row g-3 needs-validation" method = "POST" action = "/coddocumento/modificar/{{this.coddocid}}" novalidate>
+    {{> formcoddocumento}}
+</form>
+{{/each}}

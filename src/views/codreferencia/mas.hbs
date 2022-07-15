@@ -1,0 +1,14 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/codreferencia">Codigos de Referencia</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Agrega Codigo</li>
+  </ol>
+</nav>
+
+{{#if message}}
+{{message}}
+{{/if}}
+
+<form class = "row g-3 needs-validation" method = "POST" action = "/codreferencia/mas" novalidate>
+    {{> formcodreferencia}}
+</form>

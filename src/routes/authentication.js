@@ -39,10 +39,4 @@ router.get('/logout', isLoggedIn, (req, res) => {
     // res.redirect('/signin')
 });
 
-router.get('/:id', isLoggedIn, async (req,res) => {
-    const id = req.params.id;
-    const erase = await pool.query('delete from tipoparametro where tipoparid = ?',[id]);
-    res.redirect('tipoparametro');
-})
-
 module.exports = router;

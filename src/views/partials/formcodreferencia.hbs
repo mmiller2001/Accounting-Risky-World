@@ -1,0 +1,40 @@
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Codigo de Referencia
+    </div>
+
+    <div class="card-body">
+        <div class="col-6 ">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" value="{{this.codrefcodigo}}"
+                    placeholder="Par Codigo" name="codrefcodigo">
+                <label for="first_name">Codigo</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="codrefdescripcion"
+                    style="height: 200px;">{{this.codrefdescripcion}}</textarea>
+                <label for="tipodescripcion">Descripcion</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="codrefexplicacion"
+                    style="height: 200px;">{{this.codrefexplicacion}}</textarea>
+                <label for="tipodescripcion">Explicacion</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="card-footer text-muted">
+        Creado: {{this.codreffechacrea}}
+    </div>
+
+</div>

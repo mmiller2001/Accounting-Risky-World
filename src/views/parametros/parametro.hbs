@@ -1,0 +1,44 @@
+<h1 class="display-6">Parametros</h1>
+
+<table class="table table-bordered">
+  <thead class="thead-dark text-center">
+    <tr>
+      <th scope="col">Par ID</th>
+      <th scope="col">Par Codigo</th>
+      <th scope="col">Tipo Par Codigo</th>
+      <th scope="col">Par Descripcion</th>
+      <th scope="col">Par Clasificacion</th>
+      <th scope="col">Par Valor</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    {{#each parametro}}
+    <tr>
+      <th scope="row">{{this.parid}}</th>
+      <td>{{this.parcodigo}}</td>
+      <td>{{this.tipoparcodigo}}</td>
+      <td>{{this.pardescripcion}}</td>
+      <td>
+        {{this.parletras}}
+      </td>
+      <td>{{this.parvalor}}</td>
+      <td class="text-center">
+        <a href="/parametros/ver/{{this.parid}}" type="buton" class="btn btn-outline-info btn-small"><i
+            class="bi bi-eye"></i>Ver</a>
+        <a href="/parametros/modificar/{{this.parid}}" type="buton" class="btn btn-outline-primary btn-small"><i
+            class="bi bi-pencil"></i>Modificar</a>
+        <a href="/parametros/eliminar/{{this.parid}}" type="buton" class="btn btn-outline-danger btn-small"><i
+            class="bi bi-person-x"></i>Eliminar</a>
+      </td>
+    </tr>
+    {{/each}}
+
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/parametros/mas" type="button" class="btn btn-primary align-self-center">Agregar Parametro</a>
+  </div>
+</div>

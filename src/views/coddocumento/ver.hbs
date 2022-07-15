@@ -1,0 +1,32 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/coddocumento">Codigos de Documento</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ver Documento</li>
+    </ol>
+</nav>
+{{#each coddocumento}}
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Codigo de Documento <br>
+        <small>{{this.usuarionombremod}} • Modifico {{this.coddocfechamod}} </small>
+    </div>
+    
+    <div class="card-body">
+
+        <h5 class="card-title">{{this.coddoccodigo}}</h5>
+
+        <div class="text-left">
+            <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.coddoccodigo}}</p>
+            <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+            <p class="card-text"><strong>Descripcion:</strong> {{this.coddocdescripcion}}</p>
+            <p class="card-text"><strong>Explicacion:</strong> {{this.coddocexplicacion}}</p>
+
+            <hr class="bg-black">
+        </div>
+        <a href="/codreferencia" class="btn btn-primary">Codigos de Documentos</a>
+    </div>
+    <div class="card-footer text-muted">
+        <small>{{this.usuarionombre}} • Creo {{this.coddocfechacrea}}</small>
+    </div>
+</div>
+{{/each}}

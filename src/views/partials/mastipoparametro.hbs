@@ -14,11 +14,10 @@
         </div>
         {{/if}}
 
-        {{#each tipoparametro}}
         <div class="col-6">
             <div class="form-floating mb-3">
 
-                <input required type="text" class="form-control" id="floatingInput" value="{{this.tipoparcodigo}}"
+                <input type="text" class="form-control" id="floatingInput" value="{{this.tipoparcodigo}}"
                     placeholder="First Name" name="tipoparcodigo">
                 <label for="first_name">Tipo Codigo</label>
             </div>
@@ -39,7 +38,4 @@
     <div class="card-footer text-muted">
         Creado: {{this.tipoparfechacrea}}
     </div>
-    {{/each}}
 </div>
-
-{{!-- New --}}

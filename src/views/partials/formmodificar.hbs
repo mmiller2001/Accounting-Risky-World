@@ -1,0 +1,88 @@
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Parametro
+    </div>
+
+    <div class="card-body">
+        {{#each parametro}}
+        <div class="col-6">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInput" value="{{this.parcodigo}}"
+                    placeholder="Par Codigo" name="parcodigo">
+                <label for="first_name">Parametro Codigo</label>
+            </div>
+        </div>
+
+        <hr>
+        <div class="col-6">
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" name="parclasificacion"
+                    value="{{this.parclasificacion}}" aria-label="Floating label select example" required>
+                    <option value="{{this.parclasificacion}}" hidden="hidden" selected="selected">{{this.parletras}}</option>
+                    <option value="1">Caracter</option>
+                    <option value="2">Numérico</option>
+                    <option value="3">Fecha</option>
+                    <option value="4">Boolean</option>
+                </select>
+                <label for="floatingSelect">Parametro Clasificacion</label>
+            </div>
+        </div>
+        {{/each}}
+        <hr>
+        <div class="col-6">
+            <div class="form-floating">
+                <select class="form-select" id="floatingSelect" name="tipoparid"
+                    aria-label="Floating label select example" required>
+                    {{#each parametro}}
+                    <option value="{{this.tipoparid}}" hidden="hidden" selected="selected">{{this.tipoparcodigo}}
+                    </option>
+                    {{/each}}
+
+                    {{#each tipoParametros}}
+                    <option value={{this.tipoparid}}>{{this.tipoparcodigo}}</option>
+                    {{/each}}
+                </select>
+                <label for="floatingSelect">Tipo Parametro</label>
+            </div>
+        </div>
+
+        <hr>
+        {{#each parametro}}
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="pardescripcion"
+                    style="height: 200px;">{{this.pardescripcion}}</textarea>
+                <label for="tipodescripcion">Parametro Descripcion</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="parexplicacion"
+                    style="height: 200px;">{{this.parexplicacion}}</textarea>
+                <label for="tipodescripcion">Parametro Explicacion</label>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="floatingInput" placeholder="Comments" name="parvalor"
+                    style="height: 200px;">{{this.parvalor}}</textarea>
+                <label for="tipodescripcion">Parametro Valor</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+        {{/each}}
+
+    </div>
+
+    {{#each parametro}}
+    <div class="card-footer text-muted">
+        Creado: {{this.parfechacrea}}
+    </div>
+    {{/each}}
+
+</div>

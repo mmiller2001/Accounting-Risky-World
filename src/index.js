@@ -43,6 +43,7 @@ app.use(passport.session());
 app.use((req,res,next) => {
     app.locals.success = req.flash('success');
     app.locals.message = req.flash('message');
+    app.locals.warning = req.flash('warning');
     app.locals.user  = req.user;
     next();
 })
@@ -51,7 +52,13 @@ app.use((req,res,next) => {
 app.use(require('./routes'))
 app.use(require('./routes/tipoparametro'))
 app.use(require('./routes/authentication'))
+
 app.use('/links',require('./routes/links'))
+app.use('/parametros',require('./routes/parametros'))
+app.use('/codreferencia',require('./routes/codreferencia'))
+app.use('/coddocumento',require('./routes/coddocumento'))
+app.use('/estandar',require('./routes/estandar'))
+app.use('/estandar',require('./routes/subcuentas1'))
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

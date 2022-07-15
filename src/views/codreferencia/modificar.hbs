@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/codreferencia">Codigos de Referencia</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Modificar Codigo</li>
+  </ol>
+</nav>
+
+{{#each codreferencia}}
+<form class = "row g-3 needs-validation" method = "POST" action = "/codreferencia/modificar/{{this.codrefid}}" novalidate>
+    {{> formcodreferencia}}
+</form>
+{{/each}}

@@ -7,7 +7,6 @@
 
 {{#each tipoparametro}}
 <form class = "row g-3 needs-validation" method = "POST" action = "/edituser/{{this.tipoparid}}" novalidate>
-
-    {{> formtipoparametro}}
+    {{> formtipoparametro @root}}
 </form>
 {{/each}}

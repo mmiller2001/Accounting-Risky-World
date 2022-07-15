@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/parametros">Parametros</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ver Parametro</li>
+    </ol>
+</nav>
+
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+
+    {{#each parametro}}
+    <div class="card-header">
+        Parametro <br>
+        <small>{{this.usuarionombremod}} • Modifico {{this.parfechamod}} </small>
+    </div>
+    <div class="card-body">
+        
+        <h5 class="card-title">{{this.parcodigo}}</h5>
+
+        <div class="text-left">
+            <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.parcodigo}}</p>
+            <p class="card-text"><strong>Clasificacion:</strong> {{this.parletras}}</p>
+            <p class="card-text"><strong>Descripcion:</strong> {{this.pardescripcion}}</p>
+            <p class="card-text"><strong>Explicacion:</strong> {{this.parexplicacion}}</p>
+            <p class="card-text"><strong>Valor:</strong> {{this.parvalor}}</p>
+            {{!-- <p class="card-text"><strong>Tipo ID:</strong> {{this.tipoparid}}</p> --}}
+            {{/each}}
+
+            {{#each tipoParametro}}
+            <p class="card-text"><strong>Codigo de Tipo Parametro:</strong> {{this.tipoparcodigo}}</p>
+            <p class="card-text"><strong>Descripcion de Tipo Parametro:</strong> {{this.tipodescripcion}}</p>
+            {{/each}}
+            <hr class="bg-black">
+        </div>
+        <a href="/parametros" class="btn btn-primary">Parametros</a>
+    </div>
+    {{#each parametro}}
+    <div class="card-footer text-muted">
+        <small>{{this.usuarionombre}} • Creo {{this.parfechacrea}}</small>
+    </div>
+    {{/each}}
+
+</div>

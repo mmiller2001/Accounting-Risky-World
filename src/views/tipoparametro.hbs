@@ -1,36 +1,90 @@
-<div class = "row">
-  <div class = "col-6 d-flex justify-content-end">
-    <a href = "/tipoparametromas" type = "button" class = "btn btn-primary align-self-center">+ Tipo Parametro</a>
-  </div>
+<script>
+  const myModal = document.getElementById('myModal')
+  const myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+  })
+
+</script>
+
+{{!-- New --}}
+{{!-- New --}}
+
+<h1 class="display-6">Tipo Parametros</h1>
+
+{{#if success}}
+<div class="alert alert-danger mx-auto alert-dismissible fade show" role="alert" style="max-width: 30rem;">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
+{{/if}}
 
 <table class="table table-bordered">
-  <thead class = "thead-dark">
+  <thead class="thead-dark text-center">
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Tipo ID</th>
       <th scope="col">Tipo Codigo</th>
       <th scope="col">Tipo Descripcion</th>
       <th scope="col">Acciones</th>
-      <th scope="col">Creado por:</th>
-      <th scope="col">Tiempo Creado:</th>
-      <th scope="col">Owner</th>
+      <th scope="col">Usuario</th>
+      {{!-- <th scope="col">Tiempo Creado:</th> --}}
     </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
     {{#each tipoparametro}}
     <tr>
       <th scope="row">{{this.tipoparid}}</th>
       <td>{{this.tipoparcodigo}}</td>
       <td>{{this.tipodescripcion}}</td>
-     <td class = "text-end">
-         <a href = "/viewuser/{{this.tipoparid}}" type = "buton" class = "btn btn-light btn-small"><i class = "bi bi-eye"></i>View</a>
-         <a href = "/edituser/{{this.tipoparid}}" type = "buton" class = "btn btn-light btn-small"><i class = "bi bi-pencil"></i>Edit</a>
-         <a href = "/{{this.tipoparid}}" type = "buton" class = "btn btn-light btn-small"><i class = "bi bi-person-x"></i>Delete</a>
-     </td>
-     <td>{{this.tipoparusrcreaid}}</td>
-     <td>{{timeago created_at}}</td>
+      <td class="text-center">
+        <a href="/viewuser/{{this.tipoparid}}" type="button" class="btn btn-outline-info btn-small"><i
+            class="bi bi-eye"></i>Ver</a>
+        <a href="/edituser/{{this.tipoparid}}" type="button" class="btn btn-outline-primary btn-small"><i
+            class="bi bi-pencil"></i>Modificar</a>
+        <a href="/delete/{{this.tipoparid}}" type="button" class="btn btn-outline-danger btn-small"
+          value={{this.tipoparid}} data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.tipoparid}}"
+          data-target={{this.tipoparid}}><i class="bi bi-person-x"></i>Eliminar</a>
+      </td>
+
+      {{!-- New --}}
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop{{this.tipoparid}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" value={{this.tipoparid}}>
+        <div class="modal-dialog text-center">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title w-100" id="staticBackdropLabel">Eliminar
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              Estas seguro que quieres eliminar este Tipo Parametro?
+              <hr>
+              <p class="card-text"><strong>Id:</strong> {{this.tipoparid}}</p>
+              <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.tipoparcodigo}}</p>
+              <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+              <p class="card-text"><strong>Descripcion:</strong> {{this.tipodescripcion}}</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a type="button" class="btn btn-outline-danger yes" href="/delete/{{this.tipoparid}}">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- New --}}
+
+      <td>{{this.usuarionombre}}</td>
     </tr>
     {{/each}}
-    
   </tbody>
 </table>
+
+<div class="row">
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/tipoparametromas" type="button" class="btn btn-primary align-self-center">Agregar Tipo Parametro</a>
+  </div>
+</div>
