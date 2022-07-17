@@ -1,10 +1,11 @@
+{{#each catalogo}}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/estandar">Catalogos de Cuenta - Estandar</a></li>
+        <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}">Catalogos de Cuenta - Estandar</a></li>
         <li class="breadcrumb-item active" aria-current="page">Ver Catalogos de Cuenta</li>
     </ol>
 </nav>
-{{#each catalogo}}
+
 <div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
     <div class="card-header">
         Catalogos de Cuenta - Estandar <br>
@@ -26,7 +27,7 @@
 
             <hr class="bg-black">
         </div>
-        <a href="/estandar" class="btn btn-primary">Catalogos de Cuentas - Estandar</a>
+        <a href="/estandar/subcuentas/{{this.cc1id}}" class="btn btn-primary">Catalogos de Cuentas - Estandar</a>
     </div>
     <div class="card-footer text-muted">
         <small>{{this.usuarionombre}} • Creo {{this.catbasefechacrea}}</small>

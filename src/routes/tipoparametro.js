@@ -95,6 +95,7 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
         req.flash('success', 'Tipo Parametro ha sido eliminado');
         res.redirect('/tipoparametro');
     } catch (error) {
+        console.log(error.code)
         if (error.code === 'ER_ROW_IS_REFERENCED_2') {
             console.log('\n----------------------ERROR-----------------------\n')
             req.flash('message', 'Accion Invalida. Parametros dependen del Tipo de Parametro seleccionado.')

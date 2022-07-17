@@ -52,8 +52,9 @@ router.get('/modificar/:id', isLoggedIn, async (req,res) => {
 
     const coddocid = await pool.query('select distinct coddocid, coddocdescripcion from coddocumento');
     const codrefid = await pool.query('select distinct codrefid, codrefdescripcion from codreferencia');
+    const nivel = 1;
 
-    res.render('estandar/modificar', {catalogo,coddocid,codrefid})
+    res.render('estandar/modificar', {catalogo,coddocid,codrefid, nivel})
 })
 
 router.post('/modificar/:id', isLoggedIn, async (req,res) => {
@@ -68,9 +69,13 @@ router.post('/modificar/:id', isLoggedIn, async (req,res) => {
 
 router.get('/ver/:id', isLoggedIn, async (req,res) => {
     const catbaseid = req.params.id;
+    console.log('catbaseid:', catbaseid)
+    const catalogo2 = await pool.query('select * from catalogobase where catbaseid = ?', [catbaseid])
+    console.log('catalogo2:', catalogo2);
+
     const catalogo = await pool.query('select cb.catbaseid, cb.catbasenivel, cb.catbasecodigo, cb.catbasedescripcion, cb.catbaseexplicacion, cb.codrefid, cb.coddocid, cb.catbaseusrcreaid, cb.catbasefechacrea, cb.catbaseusrmodid, cb.catbasefechamod, u.usuarionombre, m.usuarionombre as usuarionombremod, cr.codrefdescripcion, cd.coddocdescripcion  from catalogobase cb join usuario u on cb.catbaseusrcreaid = u.usuarioid join usuario m on cb.catbaseusrmodid = m.usuarioid join codreferencia cr on cb.codrefid = cr.codrefid join coddocumento cd on cb.coddocid = cd.coddocid where cb.catbaseid = ?', [catbaseid]);
 
-    console.log(catalogo)
+    console.log('catalogo:', catalogo);
 
     res.render('estandar/ver', {catalogo})
 })
