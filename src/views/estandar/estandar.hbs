@@ -2,10 +2,11 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item active" aria-current="page">Catalogos de Cuentas - Nivel Superior</li>
   </ol>
-</nav><h1 class="display-6">Catalogos de Cuenta - Nivel Superior</h1>
+</nav>
+<h1 class="display-6">Catalogos de Cuenta - Nivel Superior</h1>
 
 <table class="table table-bordered">
-  <thead class = "thead-dark text-center">
+  <thead class="thead-dark text-center">
     <tr>
       <th scope="col">Catbase ID</th>
       <th scope="col">Codigo</th>
@@ -19,20 +20,71 @@
       <th scope="row">{{this.catbaseid}}</th>
       <td>{{this.catbasecodigo}}</td>
       <td>{{this.catbasedescripcion}}</td>
-     <td class = "text-center">
-         <a href = "/estandar/ver/{{this.catbaseid}}" type = "buton" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
-         <a href = "/estandar/modificar/{{this.catbaseid}}" type = "buton" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
-         <a href = "/estandar/subcuentas/{{this.catbaseid}}" type = "buton" class = "btn btn-outline-secondary btn-small"><i class = "bi bi-pencil"></i>Agregar Subcuentas</a>
-         <a href = "/estandar/eliminar/{{this.catbaseid}}" type = "buton" class = "btn btn-outline-danger btn-small"><i class = "bi bi-person-x"></i>Eliminar</a>
-     </td>
+      <td class="text-center">
+        <a href="/estandar/ver/{{this.catbaseid}}" type="buton" class="btn btn-outline-info btn-small"><i
+            class="bi bi-eye"></i>Ver</a>
+        <a href="/estandar/modificar/{{this.catbaseid}}" type="buton" class="btn btn-outline-primary btn-small"><i
+            class="bi bi-pencil"></i>Modificar</a>
+        <a href="/estandar/subcuentas/{{this.catbaseid}}" type="buton" class="btn btn-outline-secondary btn-small"><i
+            class="bi bi-pencil"></i>Agregar Subcuentas</a>
+        <a href="/estandar/eliminar/{{this.catbaseid}}" type="buton" class="btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.catbaseid}}" data-target={{this.catbaseid}}><i
+            class="bi bi-person-x"></i>Eliminar</a>
+      </td>
+
+      {{!-- New --}}
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop{{this.catbaseid}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" value={{this.catbaseid}}>
+        <div class="modal-dialog text-center">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title w-100" id="staticBackdropLabel">Eliminar
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              Confirme eliminacion del Catalogo de Cuenta
+              <hr>
+              <p class="card-text"><strong>Catalogo de Cuenta ID:</strong> {{this.catbaseid}}</p>
+              <p class="card-text"><strong>Codigo:</strong> {{this.catbasecodigo}}</p>
+              <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+              <p class="card-text"><strong>Descripcion:</strong> {{this.catbasedescripcion}}</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a type="button" class="btn btn-outline-danger yes"
+                href="/estandar/eliminar/{{this.catbaseid}}">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- New --}}
     </tr>
     {{/each}}
-    
+
   </tbody>
 </table>
 
-<div class = "row">
-  <div class = "col-6 d-flex justify-content-end">
-    <a href = "/estandar/mas" type = "button" class = "btn btn-primary align-self-center">Agregar Cuenta a Nivel 1</a>
+{{#if message}}
+<div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="alert alert-success mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+<div class="row">
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/estandar/mas" type="button" class="btn btn-primary align-self-center">Agregar Cuenta a Nivel 1</a>
   </div>
 </div>

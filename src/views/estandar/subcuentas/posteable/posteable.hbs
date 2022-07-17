@@ -1,10 +1,11 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/estandar">Catalogos de Cuentas - Nivel Superior</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Catalogos de Cuentas - Nivel Medio</li>
+    <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}">Catalogos de Cuentas - Nivel Medio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Catalogos de Cuentas - Nivel Posteable</li>
   </ol>
 </nav>
-<h1 class="display-6">Catalogos de Cuenta - Nivel Medio</h1>
+<h1 class="display-6">Catalogos de Cuenta - Nivel Posteable</h1>
 
 <table class="table table-bordered">
   <thead class = "thead-dark text-center">
@@ -22,10 +23,9 @@
       <td>{{this.catbasecodigo}}</td>
       <td>{{this.catbasedescripcion}}</td>
      <td class = "text-center">
-         <a href = "/estandar/subcuentas/{{this.cc1id}}/ver/{{this.cc2id}}" type = "button" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
-         <a href = "/estandar/subcuentas/{{this.cc1id}}/modificar/{{this.cc2id}}" type = "button" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
-         <a href = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}" type = "button" class = "btn btn-outline-secondary btn-small"><i class = "bi bi-pencil"></i>Agregar Subcuentas</a>
-         <a href = "/estandar/subcuentas/{{this.cc1id}}/eliminar/{{this.cc2id}}" type = "button" class = "btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.catbaseid}}" data-target={{this.catbaseid}}><i class = "bi bi-person-x"></i>Eliminar</a>
+         <a href = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/ver/{{this.cc3id}}" type = "button" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
+         <a href = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/modificar/{{this.cc3id}}" type = "button" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
+         <a href = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/eliminar/{{this.cc3id}}" type = "button" class = "btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.catbaseid}}" data-target={{this.catbaseid}}><i class = "bi bi-person-x"></i>Eliminar</a>
      </td>
 
      {{!-- New --}}
@@ -50,7 +50,7 @@
             <div class="modal-footer d-flex justify-content-between">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               <a type="button" class="btn btn-outline-danger yes"
-                href="/estandar/subcuentas/{{this.cc1id}}/eliminar/{{this.cc2id}}">Eliminar</a>
+                href="/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/eliminar/{{this.cc3id}}">Eliminar</a>
             </div>
           </div>
         </div>
@@ -82,6 +82,6 @@
 
 <div class = "row">
   <div class = "col-6 d-flex justify-content-end">
-    <a href = "/estandar/subcuentas/{{this.catbaseid}}/mas" type = "button" class = "btn btn-primary align-self-center">Agregar Cuenta a Nivel 2</a>
+    <a href = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/mas" type = "button" class = "btn btn-primary align-self-center">Agregar Cuenta a Nivel 3</a>
   </div>
 </div>

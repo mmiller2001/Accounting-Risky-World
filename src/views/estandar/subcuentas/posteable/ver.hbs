@@ -1,0 +1,38 @@
+{{#each catalogo}}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/estandar">Catalogos de Cuentas - Nivel Superior</a></li>
+    <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}">Catalogos de Cuentas - Nivel Medio</a></li>
+    <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}">Catalogos de Cuentas - Nivel Posteable</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Ver Catalogo de Cuenta</li>
+  </ol>
+</nav>
+
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Catalogos de Cuenta - Estandar <br>
+        <small>{{this.usuarionombremod}} • Modifico {{this.catbasefechamod}} </small>
+    </div>
+    
+    <div class="card-body">
+
+        <h5 class="card-title">{{this.catbasecodigo}}</h5>
+
+        <div class="text-left">
+            <p class="card-text"><strong>Codigo de Catalogo:</strong> {{this.catbasecodigo}}</p>
+            <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+            <p class="card-text"><strong>Nivel:</strong> {{this.catbasenivel}}</p>
+            <p class="card-text"><strong>Codigo de Referencia:</strong> {{this.codrefdescripcion}}</p>
+            <p class="card-text"><strong>Codigo de Documento:</strong> {{this.coddocdescripcion}}</p>
+            <p class="card-text"><strong>Descripcion:</strong> {{this.catbasedescripcion}}</p>
+            <p class="card-text"><strong>Explicacion:</strong> {{this.catbaseexplicacion}}</p>
+
+            <hr class="bg-black">
+        </div>
+        <a href="/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}" class="btn btn-primary">Catalogos de Cuentas - Nivel Posteable</a>
+    </div>
+    <div class="card-footer text-muted">
+        <small>{{this.usuarionombre}} • Creo {{this.catbasefechacrea}}</small>
+    </div>
+</div>
+{{/each}}

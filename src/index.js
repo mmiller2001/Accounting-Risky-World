@@ -59,6 +59,7 @@ app.use('/codreferencia',require('./routes/codreferencia'))
 app.use('/coddocumento',require('./routes/coddocumento'))
 app.use('/estandar',require('./routes/estandar'))
 app.use('/estandar',require('./routes/subcuentas1'))
+app.use('/estandar',require('./routes/posteable'))
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

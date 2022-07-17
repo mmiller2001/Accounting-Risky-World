@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/estandar">Catalogos de Cuentas - Nivel Superior</a></li>
+    <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}">Catalogos de Cuentas - Nivel Medio</a></li>
+    <li class="breadcrumb-item"><a href="/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}">Catalogos de Cuentas - Nivel Posteable</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Agregar Cuenta</li>
+  </ol>
+</nav>
+
+<form class = "row g-3 needs-validation" method = "POST" action = "/estandar/subcuentas/{{this.cc1id}}/posteable/{{this.cc2id}}/mas" novalidate>
+    {{> formestandar}}
+</form>
