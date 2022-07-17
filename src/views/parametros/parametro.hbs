@@ -1,3 +1,13 @@
+<script>
+  const myModal = document.getElementById('myModal')
+  const myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+  })
+
+</script>
+
 <h1 class="display-6">Parametros</h1>
 
 <table class="table table-bordered">
@@ -24,18 +34,65 @@
       </td>
       <td>{{this.parvalor}}</td>
       <td class="text-center">
-        <a href="/parametros/ver/{{this.parid}}" type="buton" class="btn btn-outline-info btn-small"><i
+        <a href="/parametros/ver/{{this.parid}}" type="button" class="btn btn-outline-info btn-small"><i
             class="bi bi-eye"></i>Ver</a>
-        <a href="/parametros/modificar/{{this.parid}}" type="buton" class="btn btn-outline-primary btn-small"><i
+        <a href="/parametros/modificar/{{this.parid}}" type="button" class="btn btn-outline-primary btn-small"><i
             class="bi bi-pencil"></i>Modificar</a>
-        <a href="/parametros/eliminar/{{this.parid}}" type="buton" class="btn btn-outline-danger btn-small"><i
+        <a href="/parametros/eliminar/{{this.parid}}" type="button" class="btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.parid}}" data-target={{this.parid}}><i
             class="bi bi-person-x"></i>Eliminar</a>
       </td>
+
+      {{!-- New --}}
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop{{this.parid}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" value={{this.parid}}>
+        <div class="modal-dialog text-center">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title w-100" id="staticBackdropLabel">Eliminar
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              Confirme eliminacion del Registro de Parametro
+              <hr>
+              <p class="card-text"><strong>Par Id:</strong> {{this.parid}}</p>
+              <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.parcodigo}}</p>
+              <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+              <p class="card-text"><strong>Descripcion:</strong> {{this.pardescripcion}}</p>
+              <p class="card-text"><strong>Clasificacion:</strong> {{this.parletras}}</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a type="button" class="btn btn-outline-danger yes" href="/parametros/eliminar/{{this.parid}}">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- New --}}
     </tr>
     {{/each}}
 
   </tbody>
 </table>
+
+{{#if message}}
+<div class="alert alert-danger mx-auto alert-dismissible fade show" role="alert" style="max-width: 50rem;">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="alert alert-success mx-auto alert-dismissible fade show" role="alert" style="max-width: 30rem;">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
 
 <div class="row">
   <div class="col-6 d-flex justify-content-end">

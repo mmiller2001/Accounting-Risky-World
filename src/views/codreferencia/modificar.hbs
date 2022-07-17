@@ -7,6 +7,6 @@
 
 {{#each codreferencia}}
 <form class = "row g-3 needs-validation" method = "POST" action = "/codreferencia/modificar/{{this.codrefid}}" novalidate>
-    {{> formcodreferencia}}
+    {{> formcodreferenciamod @root}}
 </form>
 {{/each}}

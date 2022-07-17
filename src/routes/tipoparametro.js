@@ -33,6 +33,7 @@ router.post('/tipoparametromas', isLoggedIn, async (req, res) => {
 
     try {
         const tipoparametromas = await pool.query('insert into tipoparametro set ?', [nuevoTipoParametro]);
+        req.flash('success', 'Tipo Parametro ha sido insertado');
         res.redirect('/tipoparametro');
     } catch (error) {
         if (error.message === 'ER_DATA_TOO_LONG: Data too long for column \'tipoparcodigo\' at row 1') {
@@ -71,6 +72,7 @@ router.post('/edituser/:id', isLoggedIn, async (req, res) => {
 
     try {
         const tipoparametro = await pool.query('update tipoparametro set tipoparcodigo = ?, tipodescripcion = ?, tipoparfechamod = ?, tipoparusrmodid = ? where tipoparid = ?', [tipoparcodigo, tipodescripcion, date, user.usuarioid, tipoparid]);
+        req.flash('success', 'Parametro ha sido modificado');
         res.redirect('/tipoparametro');
     } catch (error) {
         if (error.message === 'ER_DATA_TOO_LONG: Data too long for column \'tipoparcodigo\' at row 1') {

@@ -7,20 +7,10 @@
   })
 
 </script>
-
 {{!-- New --}}
 {{!-- New --}}
 
 <h1 class="display-6">Tipo Parametros</h1>
-
-{{#if success}}
-<div class="alert alert-success mx-auto alert-dismissible fade show" role="alert" style="max-width: 30rem;">
-  {{success}}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-{{/if}}
 
 <table class="table table-bordered">
   <thead class="thead-dark text-center">
@@ -61,7 +51,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body ">
-              Estas seguro que quieres eliminar este Tipo Parametro?
+              Confirme eliminacion del Registro de Tipo de Parametro
               <hr>
               <p class="card-text"><strong>Id:</strong> {{this.tipoparid}}</p>
               <p class="card-text"><strong>Codigo de Parametro:</strong> {{this.tipoparcodigo}}</p>
@@ -86,6 +76,15 @@
 {{#if message}}
 <div class="alert alert-danger mx-auto alert-dismissible fade show" role="alert" style="max-width: 50rem;">
   {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="alert alert-success mx-auto alert-dismissible fade show" role="alert" style="max-width: 30rem;">
+  {{success}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

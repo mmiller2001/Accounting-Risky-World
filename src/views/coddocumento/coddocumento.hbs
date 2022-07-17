@@ -1,3 +1,13 @@
+<script>
+  const myModal = document.getElementById('myModal')
+  const myInput = document.getElementById('myInput')
+
+  myModal.addEventListener('shown.bs.modal', () => {
+    myInput.focus()
+  })
+
+</script>
+
 <h1 class="display-6">Codigos de Documento</h1>
 
 <table class="table table-bordered">
@@ -20,13 +30,61 @@
      <td class = "text-center">
          <a href = "/coddocumento/ver/{{this.coddocid}}" type = "buton" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
          <a href = "/coddocumento/modificar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
-         <a href = "/coddocumento/eliminar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-danger btn-small"><i class = "bi bi-person-x"></i>Eliminar</a>
+         <a href = "/coddocumento/eliminar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.coddocid}}" data-target={{this.coddocid}}><i class = "bi bi-person-x"></i>Eliminar</a>
      </td>
+
+     {{!-- New --}}
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop{{this.coddocid}}" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" value={{this.coddocid}}>
+        <div class="modal-dialog text-center">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title w-100" id="staticBackdropLabel">Eliminar
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body ">
+              Confirme eliminacion del Codigo de Documento
+              <hr>
+              <p class="card-text"><strong>Codigo de Documento ID:</strong> {{this.coddocid}}</p>
+              <p class="card-text"><strong>Codigo:</strong> {{this.coddoccodigo}}</p>
+              <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+              <p class="card-text"><strong>Descripcion:</strong> {{this.coddocdescripcion}}</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <a type="button" class="btn btn-outline-danger yes"
+                href="/coddocumento/eliminar/{{this.coddocid}}">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- New --}}
     </tr>
     {{/each}}
     
   </tbody>
 </table>
+
+{{#if message}}
+<div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
+  {{message}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
+{{#if success}}
+<div class="alert alert-success mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
+  {{success}}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{{/if}}
+
 
 <div class = "row">
   <div class = "col-6 d-flex justify-content-end">
