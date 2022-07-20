@@ -1,0 +1,57 @@
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Periodo Contable
+    </div>
+
+    <div class="card-body">
+
+        {{#if message}}
+        <div class="alert alert-danger mx-auto alert-dismissible fade show" role="alert" style="max-width: 30rem;">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{/if}}
+        
+        <div class="col-6 ">
+            <div class="form-floating mb-3">
+                <input type="number" min="2000" max="2999" class="form-control" id="floatingInput" value="{{this.perconanio}}"
+                    placeholder="Par Codigo" name="perconanio">
+                <label for="first_name">Año Contable</label>
+            </div>
+        </div>
+
+        <div class="col-6 ">
+            <div class="form-floating mb-3">
+                <input type="number" min="1" max="52" class="form-control" id="floatingInput" value="{{this.perconperiodo}}"
+                    placeholder="Par Codigo" name="perconperiodo">
+                <label for="first_name">Periodo Contable</label>
+            </div>
+        </div>
+
+        <div class="col-6 ">
+            <div class="form-floating mb-3">
+                <input type="date" class="form-control" id="floatingInput" value="{{this.perconfechainicial}}"
+                    placeholder="Par Codigo" name="perconfechainicial">
+                <label for="first_name">Fecha Inicial</label>
+            </div>
+        </div>
+
+        <div class="col-6 ">
+            <div class="form-floating mb-3">
+                <input type="date" min="perconfechainicial" class="form-control" id="floatingInput" value="{{this.perconfechafinal}}"
+                    placeholder="Par Codigo" name="perconfechafinal">
+                <label for="first_name">Fecha Final</label>
+            </div>
+        </div>
+
+        <div class="col-12 d-grid">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+    </div>
+
+    <div class="card-footer text-muted">
+        Creado: {{this.codreffechacrea}}
+    </div>
+</div>
