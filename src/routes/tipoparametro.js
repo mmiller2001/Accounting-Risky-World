@@ -7,8 +7,10 @@ const moment = require('moment');
 
 // Parametro
 router.get('/tipoparametro', isLoggedIn, async (req, res) => {
+    const data = req.body;
     const tipoparametro = await pool.query('select *, u.usuarionombre from tipoparametro tp join usuario u on tp.tipoparusrcreaid = u.usuarioid')
     const user = req.user;
+    console.log(tipoparametro,data)
 
     res.render('tipoparametro', { tipoparametro, user })
 })

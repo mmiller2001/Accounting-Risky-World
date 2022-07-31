@@ -6,7 +6,7 @@ const { isLoggedIn } = require('../lib/auth');
 const moment = require('moment');
 
 router.get('/', isLoggedIn, async (req, res) => {
-    const coddocumento = await pool.query('select cd.coddocid, cd.coddoccodigo, cd.coddocdescripcion, cd.coddocexplicacion, cd.coddocusrcreaid, cd.coddocfechacrea, cd.coddocusrmodid, cd.coddocfechamod, u.usuarionombre from coddocumento cd join usuario u on cd.coddocusrcreaid = u.usuarioid');
+    const coddocumento = await pool.query('select cd.coddocid, cd.coddoccodigo, cd.coddocdescripcion, cd.coddocexplicacion, cd.coddocusrcreaid, cd.coddocfechacrea, cd.coddocusrmodid, cd.coddocfechamod, u.usuarionombre from coddocumento cd join usuario u on cd.coddocusrcreaid = u.usuarioid order by cd.coddoccodigo');
     // console.log(coddocumento)
     res.render('coddocumento/coddocumento', { coddocumento })
 })

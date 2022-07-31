@@ -1,0 +1,12 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/periodoscontables">Periodos Contables</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Modificar Periodo</li>
+    </ol>
+</nav>
+
+{{#each periodocontable}}
+<form class="row g-3 needs-validation" method="POST" action="/periodoscontables/modificar/{{this.perconid}}" novalidate>
+    {{> formperiodocontablemod @root}}
+</form>
+{{/each}}

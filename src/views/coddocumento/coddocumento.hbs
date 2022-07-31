@@ -8,10 +8,31 @@
 
 </script>
 
-<h1 class="display-6">Codigos de Documento</h1>
+<div class="col">
+  <div class="d-flex justify-content-between">
+    <h1 class="display-6">Codigos de Documento</h1>
+    {{#if success}}
+    <div class="alert alert-success mx-auto alert-dismissible fade show text-center" role="alert">
+      {{success}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    {{#if message}}
+    <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    <a href="/coddocumento/mas" type="button" class="btn btn-primary align-self-center">Agregar Codigo Documento</a>
+  </div>
+</div>
 
 <table class="table table-bordered">
-  <thead class = "thead-dark text-center">
+  <thead class="thead-dark text-center">
     <tr>
       <th scope="col">Documento ID</th>
       <th scope="col">Codigo</th>
@@ -27,13 +48,17 @@
       <td>{{this.coddoccodigo}}</td>
       <td>{{this.coddocdescripcion}}</td>
       <td>{{this.coddocexplicacion}}</td>
-     <td class = "text-center">
-         <a href = "/coddocumento/ver/{{this.coddocid}}" type = "buton" class = "btn btn-outline-info btn-small"><i class = "bi bi-eye"></i>Ver</a>
-         <a href = "/coddocumento/modificar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-primary btn-small"><i class = "bi bi-pencil"></i>Modificar</a>
-         <a href = "/coddocumento/eliminar/{{this.coddocid}}" type = "buton" class = "btn btn-outline-danger btn-small" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.coddocid}}" data-target={{this.coddocid}}><i class = "bi bi-person-x"></i>Eliminar</a>
-     </td>
+      <td class="text-center">
+        <a href="/coddocumento/ver/{{this.coddocid}}" type="buton" class="btn btn-outline-info btn-small"><i
+            class="bi bi-eye"></i>Ver</a>
+        <a href="/coddocumento/modificar/{{this.coddocid}}" type="buton" class="btn btn-outline-primary btn-small"><i
+            class="bi bi-pencil"></i>Modificar</a>
+        <a href="/coddocumento/eliminar/{{this.coddocid}}" type="buton" class="btn btn-outline-danger btn-small"
+          data-bs-toggle="modal" data-bs-target="#staticBackdrop{{this.coddocid}}" data-target={{this.coddocid}}><i
+            class="bi bi-person-x"></i>Eliminar</a>
+      </td>
 
-     {{!-- New --}}
+      {{!-- New --}}
       <!-- Modal -->
       <div class="modal fade" id="staticBackdrop{{this.coddocid}}" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" value={{this.coddocid}}>
@@ -63,11 +88,11 @@
       {{!-- New --}}
     </tr>
     {{/each}}
-    
+
   </tbody>
 </table>
 
-{{#if message}}
+{{!-- {{#if message}}
 <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
   {{message}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -83,11 +108,11 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-{{/if}}
+{{/if}} --}}
 
 
-<div class = "row">
-  <div class = "col-6 d-flex justify-content-end">
-    <a href = "/coddocumento/mas" type = "button" class = "btn btn-primary align-self-center">Agregar Codigo Documento</a>
+<div class="row">
+  <div class="col-6 d-flex justify-content-end">
+    <a href="/coddocumento/mas" type="button" class="btn btn-primary align-self-center">Agregar Codigo Documento</a>
   </div>
 </div>

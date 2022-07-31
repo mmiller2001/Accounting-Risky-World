@@ -8,7 +8,30 @@
 
 </script>
 
-<h1 class="display-6">Codigos de Refencia</h1>
+<div class="col">
+  <div class="d-flex justify-content-between">
+    <h1 class="display-6">Codigos de Refencia</h1>
+    {{#if success}}
+    <div class="alert alert-success mx-auto alert-dismissible fade show text-center" role="alert">
+      {{success}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    {{#if message}}
+    <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    <a href="/codreferencia/mas" type="button" class="btn btn-primary align-self-center">Agregar Codigo Referencia</a>
+  </div>
+</div>
+
+{{!-- <h1 class="display-6">Codigos de Refencia</h1> --}}
 
 <table class="table table-bordered">
   <thead class="thead-dark text-center">
@@ -70,7 +93,7 @@
   </tbody>
 </table>
 
-{{#if message}}
+{{!-- {{#if message}}
 <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
   {{message}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -86,7 +109,7 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-{{/if}}
+{{/if}} --}}
 
 <div class="row">
   <div class="col-6 d-flex justify-content-end">

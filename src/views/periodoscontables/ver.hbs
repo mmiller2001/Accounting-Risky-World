@@ -1,0 +1,35 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/periodoscontables">Periodos Contables</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Ver Periodo</li>
+    </ol>
+</nav>
+
+{{#each periodocontable}}
+<div class="card text-center m-5 mx-auto" style="max-width: 50rem;">
+    <div class="card-header">
+        Periodo Contable <br>
+        <small>{{this.usuarionombremod}} • Modifico {{this.perconfechamod}} </small>
+    </div>
+    
+    <div class="card-body">
+
+        <h5 class="card-title">{{this.codrefcodigo}}</h5>
+
+        <div class="text-left">
+            <p class="card-text"><strong>Año Contable:</strong> {{this.perconanio}}</p>
+            <p class="card-text"><strong>Periodo Contable:</strong> {{this.perconperiodo}}</p>
+            <p class="card-text"><strong>Fecha Inicial:</strong> {{this.perconfechainicial}}</p>
+            <p class="card-text"><strong>Fecha Final:</strong> {{this.perconfechafinal}}</p>
+            <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
+            <p class="card-text"><strong>Estatus:</strong> {{this.perconestatus}}</p>
+
+            <hr class="bg-black">
+        </div>
+        <a href="/periodoscontables" class="btn btn-primary">Periodos Contables</a>
+    </div>
+    <div class="card-footer text-muted">
+        <small>{{this.usuarionombre}} • Creo {{this.perconfechacrea}}</small>
+    </div>
+</div>
+{{/each}}

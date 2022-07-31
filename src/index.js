@@ -61,6 +61,7 @@ app.use('/estandar',require('./routes/estandar'))
 app.use('/estandar',require('./routes/subcuentas1'))
 app.use('/estandar',require('./routes/posteable'))
 app.use('/periodoscontables',require('./routes/periodoscontables'))
+app.use('/reportecatalogos',require('./routes/reportecatalogos'))
 
 //Public
 app.use(express.static(path.join(__dirname, 'public')));

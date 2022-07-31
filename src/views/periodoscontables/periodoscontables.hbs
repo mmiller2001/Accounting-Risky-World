@@ -8,7 +8,29 @@
 
 </script>
 
-<h1 class="display-6">Periodos Contables</h1>
+<div class="col">
+  <div class="d-flex justify-content-between">
+    <h1 class="display-6">Periodos Contables</h1>
+    {{#if success}}
+    <div class="alert alert-success mx-auto alert-dismissible fade show text-center" role="alert">
+      {{success}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    {{#if message}}
+    <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert">
+      {{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+    <a href="/periodoscontables/mas" type="button" class="btn btn-primary align-self-center">Agregar Periodo
+      Contable</a>
+  </div>
+</div>
 
 <table class="table table-bordered">
   <thead class="thead-dark text-center">
@@ -66,14 +88,15 @@
               <p class="card-text"><strong>Codigo de Referencia ID:</strong> {{this.perconid}}</p>
               <p class="card-text"><strong>Año Contable:</strong> {{this.perconanio}}</p>
               <p class="card-text"><strong>Periodo Contable:</strong> {{this.perconperiodo}}</p>
-              <p class="card-text"><strong>Año Contable:</strong> {{this.perconanio}}</p>
+              <p class="card-text"><strong>Fecha Inicial:</strong> {{this.perconfechainicial}}</p>
+              <p class="card-text"><strong>Fecha Final:</strong> {{this.perconfechafinal}}</p>
               <p class="card-text"><strong>Usuario:</strong> {{this.usuarionombre}}</p>
-              <p class="card-text"><strong>Descripcion:</strong> {{this.codrefdescripcion}}</p>
+              <p class="card-text"><strong>Estatus:</strong> {{this.perconestatus}}</p>
             </div>
             <div class="modal-footer d-flex justify-content-between">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
               <a type="button" class="btn btn-outline-danger yes"
-                href="/codreferencia/eliminar/{{this.codrefid}}">Eliminar</a>
+                href="/periodoscontables/eliminar/{{this.perconid}}">Eliminar</a>
             </div>
           </div>
         </div>
@@ -85,7 +108,7 @@
   </tbody>
 </table>
 
-{{#if message}}
+{{!-- {{#if message}}
 <div class="alert alert-danger mx-auto alert-dismissible fade show text-center" role="alert" style="max-width: 40rem;">
   {{message}}
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -101,7 +124,7 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-{{/if}}
+{{/if}} --}}
 
 <div class="row">
   <div class="col-6 d-flex justify-content-end">
