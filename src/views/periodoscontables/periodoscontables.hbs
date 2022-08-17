@@ -6,6 +6,19 @@
     myInput.focus()
   })
 
+  const Handlebars = require('express-handlebars');
+  var hbs = Handlebars.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+      ifCond: function(v1, v2, options) {
+            if(v1 === v2) {
+              return options.fn(this);
+            }
+            return options.inverse(this);
+          },
+    }
+  });
+
 </script>
 
 <div class="col">
@@ -66,10 +79,12 @@
         <a href="/periodoscontables/desmayorizar/{{this.perconid}}" type="buton"
           class="btn btn-outline-primary btn-small"><i class="bi bi-pencil"></i>Desmayorizar</a>
         <a href="/periodoscontables/habilitar/{{this.perconid}}" type="buton"
-          class="btn btn-outline-primary btn-small"><i class="bi bi-pencil"></i>Habilitar</a>
+          class="btn btn-outline-dark btn-small"><i class="bi bi-pencil"></i>Habilitar</a>
         <a href="/periodoscontables/cerrar/{{this.perconid}}" type="buton" class="btn btn-outline-primary btn-small"><i
             class="bi bi-pencil"></i>Cerrar</a>
       </td>
+
+      {{!-- {{#ifCond this.perconestatus 1}}N/A{{else}}Deshabilitar{{/ifCond}} --}}
 
       {{!-- New --}}
       <!-- Modal -->

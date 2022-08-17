@@ -13,7 +13,13 @@ router.get('/', isLoggedIn, async (req, res) => {
     periodocontable.forEach(element => {
         element.perconfechainicial = moment(element.perconfechainicial).format('MMMM Do YYYY'),
             element.perconfechafinal = moment(element.perconfechafinal).format('MMMM Do YYYY');
+        if (element.perconestatus == 0) element.perconestatus = 'Cerrado'
+        if (element.perconestatus == 1) element.perconestatus = 'Abierto/Disponible'
+        if (element.perconestatus == 2) element.perconestatus = 'Abierto/No Disponible'
     })
+
+    //case when pc.perconestatus = 1 then \'Abierto/Disponible\' when pc.perconestatus = 0 then \'Cerrado\' else \'Abierto/No Disponible\' end as Estatus
+    //console.log(periodocontable)
 
     res.render('periodoscontables/periodoscontables', { periodocontable })
 })
@@ -122,6 +128,24 @@ router.get('/eliminar/:id', isLoggedIn, async (req, res) => {
         req.flash('message', 'Accion Invalida. Periodo Contable no puede ser eliminado')
         res.redirect('/periodoscontables')
     }
+})
+
+router.get('/habilitar/:id', isLoggedIn, async (req, res) => {
+    const perconid = req.params.id;
+
+    const periodocontable = await pool.query('select * from periodocontable where perconid = ?', [perconid]);
+
+    //console.log(periodocontable)
+
+    if (periodocontable[0].perconestatus == 0) req.flash('message', 'Periodo Cerrado. No puede ser cambiado.')
+    else if (periodocontable[0].perconestatus == 1) periodocontable[0].perconestatus = 2;
+    else periodocontable[0].perconestatus = 1;
+
+    const nuevoPeriodoContable = await pool.query('update periodocontable set perconestatus = ? where perconid = ?', [periodocontable[0].perconestatus, perconid])
+    //console.log(periodocontable)
+
+
+    res.redirect('/periodoscontables')
 })
 
 module.exports = router;

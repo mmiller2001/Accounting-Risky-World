@@ -12,7 +12,9 @@ const PDFDocument = require('../service/pdfkit-tables')
 // const doc = new PDFDocument();
 
 router.get('/', isLoggedIn, async (req, res, next) => {
-    const catalogo = await pool.query('select cb.catbaseid, cb.catbasenivel, cb.catbasecodigo, cb.catbasedescripcion, cb.catbaseexplicacion, cb.codrefid, cb.coddocid, cb.catbaseusrcreaid, cb.catbasefechacrea, cb.catbaseusrmodid, cb.catbasefechamod, u.usuarionombre from catalogobase cb join usuario u on cb.catbaseusrcreaid = u.usuarioid where catbasenivel = 1 order by catbasecodigo');
+    const catalogo = await pool.query('select cb.catbaseid, cb.catbasenivel, cb.catbasecodigo, cb.catbasedescripcion, cb.catbaseexplicacion, cb.codrefid, cb.coddocid, cb.catbaseusrcreaid, cb.catbasefechacrea, cb.catbaseusrmodid, cb.catbasefechamod, u.usuarionombre, cd.coddoccodigo, cr.codrefcodigo from catalogobase cb join coddocumento cd on cb.coddocid = cd.coddocid join codreferencia cr on cb.codrefid = cr.codrefid join usuario u on cb.catbaseusrcreaid = u.usuarioid order by catbasecodigo');
+
+    console.log(catalogo)
 
     const table = {
         headers: ['Catbase ID', 'Catbase Nivel', 'Catbase Codigo', 'Catbase Descripcion', 'Catbase Explicacion', 'Codrefid', 'Coddocid'],
@@ -20,7 +22,7 @@ router.get('/', isLoggedIn, async (req, res, next) => {
     };
 
     catalogo.forEach(element => {
-        table.rows.push([element.catbaseid, element.catbasenivel, element.catbasecodigo, element.catbasedescripcion, element.catbaseexplicacion, element.codrefid, element.coddocid])
+        table.rows.push([element.catbaseid, element.catbasenivel, element.catbasecodigo, element.catbasedescripcion, element.catbaseexplicacion, element.codrefcodigo, element.coddoccodigo])
     })
 
     function buildPDF(dataCallback,endCallback) {
